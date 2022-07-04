@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import { FiPlusSquare } from 'react-icons/fi';
 
 import { Container } from './styles';
@@ -8,10 +7,7 @@ interface IHeaderProps {
   openModal: () => void;
 }
 
-class Header extends Component<IHeaderProps> {
-  render() {
-    const { openModal } = this.props;
-
+function Header({ openModal }: IHeaderProps) {
     return (
       <Container>
         <header>
@@ -32,7 +28,6 @@ class Header extends Component<IHeaderProps> {
         </header>
       </Container>
     )
-  }
 };
 
 export default Header;
