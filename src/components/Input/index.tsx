@@ -15,7 +15,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: any;
 }
 
-const Input = ({ name, icon: Icon, ...rest }: IInputProps) => {
+function Input({ name, icon: Icon, ...rest }: IInputProps) {
   const inputRef = useRef<any>(null);
 
   const [isFocused, setIsFocused] = useState(false);
