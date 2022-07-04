@@ -5,14 +5,21 @@ import { Form } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
 
-class ModalAddFood extends Component {
-  constructor(props) {
-    super(props);
+import { IFood } from '../../pages/Dashboard'
 
-    this.formRef = createRef();
+interface IModalAddFoodProps {
+  handleAddFood: (food: IFood) => void;
+  isOpen: boolean;
+  setIsOpen: () => void;
+  formRef?: any;
+}
+
+class ModalAddFood extends Component<IModalAddFoodProps> {
+  constructor(props: IModalAddFoodProps) {
+    super(props);
   }
 
-  handleSubmit = async data => {
+  handleSubmit = async (data: IFood) => {
     const { setIsOpen, handleAddFood } = this.props;
 
     handleAddFood(data);
@@ -24,7 +31,7 @@ class ModalAddFood extends Component {
 
     return (
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-        <Form ref={this.formRef} onSubmit={this.handleSubmit}>
+        <Form ref={createRef()} onSubmit={this.handleSubmit}>
           <h1>Novo Prato</h1>
           <Input name="image" placeholder="Cole o link aqui" />
 

@@ -3,9 +3,20 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Container } from './styles';
 import api from '../../services/api';
+import { IFood } from '../../pages/Dashboard';
 
-class Food extends Component {
-  constructor(props) {
+interface IFoodProps {
+  food: IFood;
+  handleDelete: (id: number) => void;
+  handleEditFood: (food: IFood) => void;
+}
+
+interface IFoodState {
+  isAvailable: boolean;
+}
+
+class Food extends Component<IFoodProps, IFoodState> {
+  constructor(props: IFoodProps) {
     super(props);
 
     const { available } = this.props.food;
